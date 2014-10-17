@@ -1,0 +1,40 @@
+<head>
+	<title>imageshack</title>
+</head>
+
+<body>
+{{> main}}
+</body>
+
+<template name="image">
+	<img src="http://imagizer.imageshack.us/v2/150x150q50/{{server}}/{{filename}}" alt="" style="{{#if selected}}border:solid yellow 2px{{/if}}"/>
+</template>
+
+<template name="main">
+
+	{{#if loading}}
+		<h2>loading images...</h2>
+	{{/if}}
+
+	{{#each images}}
+		{{> image}}
+	{{/each}}
+
+	{{> postCode}}
+	<!--<input type="file" name="upload" id="upload"/>-->
+	<!--<button>UPLOAD</button>-->
+</template>
+
+<template name="postCode">
+	<pre>
+		&lt;div class=&quot;cols three&quot;&gt;
+
+			{{#each selectedImages}}
+			&lt;a class=&quot;fancybox&quot; rel=&quot;gallery1&quot; href=&quot;http://imagizer.imageshack.us/v2/1280x1024q90/{{server}}/{{filename}}&quot; title=&quot;&quot;&gt;
+				&lt;div style=&quot;background:url(http://imagizer.imageshack.us/v2/640x480q90/{{server}}/{{filename}})&quot; class=&quot;image&quot;&gt;&lt;/div&gt;
+			&lt;/a&gt;
+			{{/each}}
+
+		&lt;/div&gt;
+	</pre>
+</template>
